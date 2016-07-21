@@ -65,8 +65,20 @@ function findIndex(commandToQuery){
        console.log('Command is found in the index. Try to retrieve result from filesystem');
        retrieveCommandDescription(result);
    }else{
-       console.log('Command is not found in the index. Break');       
+       console.log('Command is not found in the index. Break');
+       let filtered = tldrIndex.commands.filter(function(command){ return command.name.startsWith( commandToQuery )});
+       listFilteredCommands(filtered);
    }
+}
+
+function listFilteredCommands( filteredCommands ){
+    var template = Handlebars.compile(appDir.read('commandList.hbs'));
+    document.getElementById('command-content').innerHTML = template({commands: filteredCommands});
+    
+    if(jumpToCommand){
+        var top = document.getElementById(jumpToCommand).offsetTop; //Getting Y of target element
+        window.scrollTo(0, top);         
+    }    
 }
 
 function retrieveCommandDescription(commandObj){
