@@ -4,6 +4,8 @@ Electron client for tldr
 https://github.com/tldr-pages/tldr
 
 ## Binary
+Windows ia32 binary is available at https://dl.dropboxusercontent.com/u/11041201/electron-tldr/tldr-electron-win32-ia32.zip
+
 Windows x64 binary is available at https://dl.dropboxusercontent.com/u/11041201/electron-tldr/tldr-electron-win32-x64.zip
 
 Mac x64 binary is available at https://dl.dropboxusercontent.com/u/11041201/electron-tldr/tldr-electron-darwin-x64.zip
