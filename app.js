@@ -1,13 +1,3 @@
-// Here is the starting point for your application code.
-// All stuff below is just to show you how it works. You can delete all of it.
-
-// Use new ES6 modules syntax for everything.
-/*import os from 'os'; // native node.js module
-import { remote } from 'electron'; // native electron module
-import jetpack from 'fs-jetpack'; // module loaded from npm
-import { greet } from './hello_world/hello_world'; // code authored by you in this project
-import env from './env';*/
-
 const os = require('os');
 const electron = require('electron');
 const { remote } = electron;
@@ -23,15 +13,11 @@ var appDir = jetpack.cwd(app.getAppPath());
 const {webFrame} = electron;
 webFrame.setZoomFactor(1.4);
 
-// Holy crap! This is browser window with HTML and stuff, but I can read
-// here files like it is node.js! Welcome to Electron world :)
-console.log('The author of this app is:', appDir.read('package.json', 'json').author);
-
 var tldrIndex;
 
 request('http://tldr-pages.github.io/assets/index.json', function (error, response, body) {
   if (!error && response.statusCode == 200) {
-    console.log(body) // Show the HTML for the Google homepage.
+    //console.log(body);
     tldrIndex = JSON.parse(body);
     jetpack.write('offline-index.json', tldrIndex);
   }else{
@@ -54,14 +40,11 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementsByClassName('app')[0].className = 'app active';
     });    
     
-    //document.getElementById('greet').innerHTML = greet();
-    //document.getElementById('platform-info').innerHTML = os.platform();
-    //document.getElementById('env-name').innerHTML = env.name;
 });
 
 function search(){
     var commandToQuery = document.getElementById('search-command-input').value;
-    console.log('commandToQuery',commandToQuery);
+    //console.log('commandToQuery',commandToQuery);
     if(commandToQuery === ''){
         listAllCommands();
     }
@@ -70,7 +53,7 @@ function search(){
 
 function findIndex(commandToQuery){
    var result =  tldrIndex.commands.find(function(command){ return command.name === commandToQuery });
-   console.log(result);
+   //console.log(result);
    if(result){
        console.log('Command is found in the index. Try to retrieve result from filesystem');
        retrieveCommandDescription(result);
@@ -88,7 +71,7 @@ function listFilteredCommands( filteredCommands ){
 
 function retrieveCommandDescription(commandObj){
     var description = appDir.read(`./pages/${commandObj.platform[0]}/${commandObj.name}.md`);
-    console.log(description);
+    //console.log(description);
     var converter = new showdown.Converter();
     var descriptionConverted = converter.makeHtml(description);
     document.getElementById('command-content').scrollTop = 0;
@@ -104,7 +87,6 @@ function listAllCommands(jumpToCommand){
         var targetCommand = document.getElementById(jumpToCommand);
         var top = targetCommand.offsetTop; //Getting Y of target element
         document.getElementById('command-content').scrollTop = top - 150;
-        //window.scrollTo(0, top - 50);    
         
         targetCommand.parentNode.className = 'active';
         setTimeout(function(){ targetCommand.parentNode.className = ''; }, 500);
