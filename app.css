@@ -23,7 +23,7 @@ button{
     padding: 10px;
     margin: 0 auto;
     width: 85%;
-    transition: 1s transform, 1s top;
+    transition: 0.5s transform, 0.5s top;
     transform: translateY(-50%);
     position: absolute;
     top: 50%;
