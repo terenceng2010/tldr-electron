@@ -15,13 +15,13 @@ const jetpack = require('fs-jetpack');
 const request = require('request');
 const showdown = require('showdown');
 const Handlebars = require('handlebars');
-
-//const env = require('./env');
-
-//console.log('Loaded environment variables:', env);
+const AdmZip = require('adm-zip');
 
 var app = remote.app;
 var appDir = jetpack.cwd(app.getAppPath());
+
+const {webFrame} = electron;
+webFrame.setZoomFactor(1.4);
 
 // Holy crap! This is browser window with HTML and stuff, but I can read
 // here files like it is node.js! Welcome to Electron world :)
@@ -33,6 +33,7 @@ request('http://tldr-pages.github.io/assets/index.json', function (error, respon
   if (!error && response.statusCode == 200) {
     console.log(body) // Show the HTML for the Google homepage.
     tldrIndex = JSON.parse(body);
+    jetpack.write('offline-index.json', tldrIndex);
   }else{
     //fallback to offline index if cannot retrieve index from internet
     tldrIndex = appDir.read('offline-index.json', 'json')
@@ -121,3 +122,16 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function updateDatabase(){
+    //What event is triggered when EOF is reached while writing to a stream ?
+    //http://stackoverflow.com/questions/13156243/event-associated-with-fs-createwritestream-in-node-js
+    var w = appDir.createWriteStream('tldr.zip');
+    var downloadZip = request('http://tldr-pages.github.io/assets/tldr.zip').pipe( w );
+    
+    w.on('finish',function(){
+     var zip = new AdmZip("tldr.zip");
+     zip.extractAllToAsync(/*target path*/"./", /*overwrite*/true, function(){
+         alert('update database completed!');
+     });
+    });
+}
