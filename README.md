@@ -5,6 +5,7 @@ https://github.com/tldr-pages/tldr
 
 ## Binary
 Windows x64 binary is available at https://dl.dropboxusercontent.com/u/11041201/electron-tldr/tldr-electron-win32-x64.zip
+Mac x64 binary is available at https://dl.dropboxusercontent.com/u/11041201/electron-tldr/tldr-electron-darwin-x64.zip
 
 ## Installation
 1. npm install
