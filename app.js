@@ -91,6 +91,7 @@ function retrieveCommandDescription(commandObj){
     console.log(description);
     var converter = new showdown.Converter();
     var descriptionConverted = converter.makeHtml(description);
+    document.getElementById('command-content').scrollTop = 0;
     document.getElementById('command-content').innerHTML = descriptionConverted;
     document.getElementById('command-content').insertAdjacentHTML("afterbegin", `<button onclick='listAllCommands("${commandObj.name}")'><-</button>`);
 }
@@ -102,8 +103,9 @@ function listAllCommands(jumpToCommand){
     if(jumpToCommand){
         var targetCommand = document.getElementById(jumpToCommand);
         var top = targetCommand.offsetTop; //Getting Y of target element
+        document.getElementById('command-content').scrollTop = top - 150;
+        //window.scrollTo(0, top - 50);    
         
-        window.scrollTo(0, top - 50);    
         targetCommand.parentNode.className = 'active';
         setTimeout(function(){ targetCommand.parentNode.className = ''; }, 500);
     }

@@ -1,6 +1,6 @@
 body{
     background: #EEEEEC;
-    height: 98vh;
+    height: 90vh;
     position: relative;                
 }
 
@@ -49,7 +49,19 @@ button{
     background: white;
     border: 1px solid #ddd;
     border-radius: 5px;
+    height: 0;
 }
+
+.active.app > #command-content{
+    margin-top:0.5rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: 75vh;
+    overflow-y: scroll;
+    transition: 0.5s height;
+}
+
 
 .app > #command-content > h1{
     margin-left:2rem;
