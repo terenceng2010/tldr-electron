@@ -44,6 +44,15 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('search-command-input').addEventListener("focus",function(){
         document.getElementsByClassName('app')[0].className = 'app active';
     });
+
+    document.getElementById('list-all-commands').addEventListener("click",function(){
+        document.getElementsByClassName('app')[0].className = 'app active';
+    });
+
+    document.getElementById('go-to-random-command').addEventListener("click",function(){
+        document.getElementsByClassName('app')[0].className = 'app active';
+    });    
+    
     //document.getElementById('greet').innerHTML = greet();
     //document.getElementById('platform-info').innerHTML = os.platform();
     //document.getElementById('env-name').innerHTML = env.name;
@@ -74,11 +83,6 @@ function findIndex(commandToQuery){
 function listFilteredCommands( filteredCommands ){
     var template = Handlebars.compile(appDir.read('commandList.hbs'));
     document.getElementById('command-content').innerHTML = template({commands: filteredCommands});
-    
-    if(jumpToCommand){
-        var top = document.getElementById(jumpToCommand).offsetTop; //Getting Y of target element
-        window.scrollTo(0, top);         
-    }    
 }
 
 function retrieveCommandDescription(commandObj){
@@ -95,8 +99,12 @@ function listAllCommands(jumpToCommand){
     document.getElementById('command-content').innerHTML = template(tldrIndex);
     
     if(jumpToCommand){
-        var top = document.getElementById(jumpToCommand).offsetTop; //Getting Y of target element
-        window.scrollTo(0, top);         
+        var targetCommand = document.getElementById(jumpToCommand);
+        var top = targetCommand.offsetTop; //Getting Y of target element
+        
+        window.scrollTo(0, top - 50);    
+        targetCommand.parentNode.className = 'active';
+        setTimeout(function(){ targetCommand.parentNode.className = ''; }, 500);
     }
     //console.log( template(tldrIndex) ) ; 
 }

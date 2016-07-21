@@ -58,3 +58,13 @@ button{
 p > code{
     margin-left:3rem;
 }
+
+li.active{
+    background: gold;
+    transition: 0.3s background;
+}
+
+li{
+    background: white;
+    transition: 0.3s background;
+}
