@@ -1,0 +1,60 @@
+body{
+    background: #EEEEEC;
+    height: 98vh;
+    position: relative;                
+}
+
+h1{
+    
+}
+
+input{
+        background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;               
+}
+button{
+        background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;               
+}
+.app{
+    display: block;
+    padding: 10px;
+    margin: 0 auto;
+    width: 85%;
+    transition: 1s transform, 1s top;
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;              
+}
+
+.active.app {
+    top: 0%;
+    transform: translateY(0%);
+} 
+
+.app > h1 {
+    text-align: center;
+}
+
+.app > .search-pane{
+    text-align: center;
+}
+
+.app > #command-content{
+    margin-top:0.5rem;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.app > #command-content > h1{
+    margin-left:2rem;
+}
+            
+p > code{
+    margin-left:3rem;
+}

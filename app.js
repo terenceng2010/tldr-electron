@@ -41,6 +41,9 @@ request('http://tldr-pages.github.io/assets/index.json', function (error, respon
 
 document.addEventListener('DOMContentLoaded', function () {
     
+    document.getElementById('search-command-input').addEventListener("focus",function(){
+        document.getElementsByClassName('app')[0].className = 'app active';
+    });
     //document.getElementById('greet').innerHTML = greet();
     //document.getElementById('platform-info').innerHTML = os.platform();
     //document.getElementById('env-name').innerHTML = env.name;
