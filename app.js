@@ -131,8 +131,14 @@ function updateDatabase(){
     var downloadZip = request('http://tldr-pages.github.io/assets/tldr.zip').pipe( w );
     
     w.on('finish',function(){
-     var zip = new AdmZip("tldr.zip");
-     zip.extractAllToAsync(/*target path*/"./", /*overwrite*/true, function(){
+     var zip;
+     if( process.platform === 'win32'){
+       zip =  new AdmZip( app.getAppPath()+"\\tldr.zip" ); 
+     }else{
+       zip = new AdmZip( app.getAppPath()+"/tldr.zip" );
+     }
+     
+     zip.extractAllToAsync( app.getAppPath() , /*overwrite*/true, function(){
          alert('update database completed!');
      });
     });
