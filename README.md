@@ -4,13 +4,13 @@ Electron client for tldr
 https://github.com/tldr-pages/tldr
 
 ## Binary
-Windows ia32 binary is available at https://www.dropbox.com/s/y9h0mcwto631vyf/tldr-electron-darwin-x64.zip?dl=0
+Windows ia32 binary is available at https://www.dropbox.com/s/7bc29k8pkz18rj0/tldr-electron-win32-ia32.zip?dl=0 
 
-Windows x64 binary is available at https://www.dropbox.com/s/cam4tmc90q4q6w8/tldr-electron-linux-x64.zip?dl=0
+Windows x64 binary is available at https://www.dropbox.com/s/uwwklhvvsxt58ry/tldr-electron-win32-x64.zip?dl=0
 
-Mac x64 binary is available at https://www.dropbox.com/s/7bc29k8pkz18rj0/tldr-electron-win32-ia32.zip?dl=0
+Mac x64 binary is available at https://www.dropbox.com/s/y9h0mcwto631vyf/tldr-electron-darwin-x64.zip?dl=0
 
-Linux x64 binary is available at https://www.dropbox.com/s/uwwklhvvsxt58ry/tldr-electron-win32-x64.zip?dl=0
+Linux x64 binary is available at https://www.dropbox.com/s/cam4tmc90q4q6w8/tldr-electron-linux-x64.zip?dl=0
 
 ## Installation
 1. npm install
